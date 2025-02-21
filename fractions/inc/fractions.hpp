@@ -1,5 +1,9 @@
-#include <iostream>
-#include <cstdlib>
+#ifndef FRACTIONS_HPP
+# define FRACTIONS_HPP
+
+# include <stdexcept>
+# include <iostream>
+# include <cstdlib>
 
 using namespace std;
 
@@ -18,6 +22,13 @@ class Fraction {
 		Fraction operator*(const Fraction& other) const;
 		Fraction operator/(const Fraction& other) const;
 
+		/*
+		 * +=
+		 * -=
+		 * *=
+		 * /=
+		 */
+
 		bool operator==(const Fraction& other) const;
 		bool operator!=(const Fraction& other) const;
 		bool operator<(const Fraction& other) const;
@@ -27,7 +38,12 @@ class Fraction {
 
 		friend ostream& operator<<(ostream& os, const Fraction& f);
 
+		bool 		isProper();
+		bool		isImproper();
 		int		numerator() const;
 		int		denomenator() const;
 
 };
+
+#endif
+

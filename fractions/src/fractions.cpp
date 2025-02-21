@@ -1,6 +1,7 @@
 #include "../inc/fractions.hpp"
 
 Fraction::Fraction(int n = 0, int d = 1) : num(n), den(d) {
+	if (d == 0) throw invalid_argument("Denominator cannot be zero");
 	simplify();
 }
 
@@ -17,8 +18,8 @@ int Fraction::gcd(int a, int b) {
 
 void Fraction::simplify() {
 	if (den == 0) {
-		den == 1;
-		num == 0;
+		den = 1;
+		num = 0;
 		return ;
 	}
 	int g = gcd(num, den);
@@ -52,7 +53,7 @@ Fraction Fraction::operator*(const Fraction& other) const {
 // Division
 Fraction Fraction::operator/(const Fraction& other) const {
 	if (other.num == 0) {
-		return Fraction(0, 1);
+		throw runtime_error("Division by zero in Fraction");
 	}
 	return Fraction(num * other.den, den * other.num);
 }
@@ -65,7 +66,7 @@ bool Fraction::operator==(const Fraction& other) const {
 
 // Inequality
 bool Fraction::operator!=(const Fraction& other) const {
-	return num != other.num && den != other.den;
+	return num != other.num || den != other.den;
 }
 
 // Smaller Than
@@ -80,20 +81,26 @@ bool Fraction::operator>(const Fraction& other) const {
 
 // Smaller or equal
 bool Fraction::operator<=(const Fraction& other) const {
-	return (num == other.num && den == other.den) || 
-		(num * other.den < den * other.num);
+	return num * other.den <= den * other.num;
 }
 
 // Greater or equal
 bool Fraction::operator>=(const Fraction& other) const {
-	return (num == other.num && den == other.den) || 
-		(num * other.den > den * other.num);
+	return num * other.den >= den * other.num;
 }
 
 // Output
 ostream& operator<<(ostream& os, const Fraction& f) {
 	os << f.num << "/" << f.den;
 	return os;
+}
+
+bool Fraction::isProper() {
+	return (num < den) ? true : false;
+}
+
+bool Fraction::isImproper() {
+	return (num > den) ? true : false;
 }
 
 int Fraction::numerator() const {
