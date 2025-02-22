@@ -8,6 +8,9 @@ int main() {
 
 	(f1.isProper()) ? cout << " Is a proper fraction\n" :
 			cout << " is an improper fraction\n";
+	Fraction f4(0, 1);
+	cin >> f4;
+	cout << f4;
 	return 0;
 }
 

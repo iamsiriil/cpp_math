@@ -3,6 +3,7 @@
 
 # include <stdexcept>
 # include <iostream>
+# include <istream>
 # include <cstdlib>
 
 using namespace std;
@@ -37,6 +38,7 @@ class Fraction {
 		bool operator>=(const Fraction& other) const;
 
 		friend ostream& operator<<(ostream& os, const Fraction& f);
+		friend istream& operator>>(istream& is, Fraction& f);
 
 		bool 		isProper();
 		bool		isImproper();

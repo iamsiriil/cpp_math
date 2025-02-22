@@ -95,6 +95,16 @@ ostream& operator<<(ostream& os, const Fraction& f) {
 	return os;
 }
 
+istream& operator>>(istream& is, Fraction& f) {
+	char slash;
+	if (!(is >> f.num) || !(is >> slash) || slash != '/' || !(is >> f.den)) {
+		is.setstate(ios::failbit);
+	} else {
+		f.simplify();
+	}
+	return is;	
+}
+
 bool Fraction::isProper() {
 	return (num < den) ? true : false;
 }
@@ -110,5 +120,4 @@ int Fraction::numerator() const {
 int Fraction::denomenator() const {
 	return den;
 }
-
 
