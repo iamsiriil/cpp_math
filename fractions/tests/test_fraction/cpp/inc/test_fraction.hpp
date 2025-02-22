@@ -2,7 +2,7 @@
 # define TEST_FRACTION_HPP
 
 # include <iostream>
-# include "../../inc/fractions.hpp"
+# include "../../../../inc/fractions.hpp"
 
 void	test_initialization();
 void	test_isproper();

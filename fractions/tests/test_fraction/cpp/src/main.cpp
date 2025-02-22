@@ -1,4 +1,4 @@
-#include "../inc/fractions.hpp"
+#include "../inc/test_fraction.hpp"
 #include "../src/fractions.cpp"
 
 int main(int argc, char **argv) {
@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
 		return 1;
 
 	int test = std::atoi(argv[1]);
-	switch test {
+	switch (test) {
 		case 1:
 			test_initialization();
 			break;
